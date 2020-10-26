@@ -9,6 +9,6 @@
   "author": "Sento",
   "license": "ISC",
   "dependencies": {
-    "lodash.merge": "^4.6.2"
+    "lodash.merge": "4.6.2"
   }
 }
