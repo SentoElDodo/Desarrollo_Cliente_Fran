@@ -3,11 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js" language="javascript" type="text/javascript"></script>
     <title>Document</title>
-    <h1>AE3</h1>
 </head>
 <body>
+  <h1>AE3</h1>
+  <header>
+    <nav id="header">
+      <button onclick="Primera_pagina()" id="A1">Atras 1</button>
+      <button onclick="F_Esconder2()" id="B1">Prueba1</button>
+      <button onclick="F_Esconder3()" id="B2">Verificación</button>
+      <button onclick="Pasar_Pagina_Con_Los_Datos()" id="B3">Enseñar los datos</button>
+  </nav>
+  </header>
+   
     <section>
+      <div id="Esconder1">
         <article>
             <h1>Paso 1</h1>
             <p>
@@ -15,35 +27,74 @@
                 en el mismo html, haciendo así unico uso de una página para toda la informción de el sitio web. <br>
                 De esta forma prentendemos que el acceso a la información sea mucho más rapido ya que no tendra que recargar la infomación cada vez.
             </p>
+            
+            URL:<input type="text" id="url">
+          
+            <p id="URL_Escondida">Introduce la URL</p>
+          
+            
         </article>
+      </div>
 
+
+
+      </section>
+      <section>
+        <div id="Esconder2">
         <article>
+          
             <form action="text" method="post">
-                <ul>
+              <ul>
                  <li>
                    <label for="name">Nombre y apellidos:</label>
-                   <input type="text" id="name" name="user_name">
+                   <input type="text" id="name" name="name" required>
+                   <p id="p1">Introduce los datos</p>
                  </li>
                  <li>
-                   <label for="mail">Fecha de nacimiento:</label>
-                   <input type="email" id="mail" name="user_mail">
+                   <label for="fecha">Fecha de nacimiento:</label>
+                   <input type="date" id="fecha" name="fecha" required>
+                   <p id="p2">Introduce los datos</p>
                  </li>
                  <li>
-                   <label for="msg">Dirección:</label>
-                   <textarea id="msg" name="user_message"></textarea>
+                   <label for="direccion">Dirección:</label>
+                   <input type="text" id="direccion" name="direccion">
                  </li>
                  <li>
-                  <label for="mail">Código postal:</label>
-                  <input type="email" id="mail" name="user_mail">
+                  <label for="cp">Código postal:</label>
+                  <input type="text" id="cp" name="cp">
+                  <p id="p3">Introduce los datos</p>
                 </li>
                 <li>
-                  <label for="mail">Provincia</label>
-                  <input type="email" id="mail" name="user_mail">
+                    Provincias: <select name="Provincias" id="pro">
+                    <option></option>  
+                    <option>Valencia</option>
+                    <option>Alicante</option>
+                    <option>Castellon</option>
+                    </select>
+                    <p id="p4">Introduce los datos</p>
                 </li>
-                </ul>
-               </form>
+                <li>
+                  <label for="municipio">Municipio</label>
+                  <input type="text" id="municipio" value style="text-transform:uppercase" onkeyup="javascript:this.value=this.value.toUpperCase()">
+                  <p id="p5">Introduce los datos</p>
+                </li>
+              </ul>
+            </form>
+        
         </article>
+      </div>
+      <div id= "Enseñar_resultado">
+        <article>
+          <p id="Enseña_Nombre"></p>
+          <p id="Fecha">Fecha</p> 
+          <p id="Direccion">Dirección</p>
+          <p id="Codigo_ Postal">Codigo_ Postal</p>
+          <p id="Enseña_Provincia">Enseña_Provincia</p>
+          <p id="Enseñar_Municipio">Enseñar_Municipio</p>        
+        </article>
+      </div>
     </section>
+  
     
 </body>
 </html>

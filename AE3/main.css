@@ -1,0 +1,94 @@
+*{
+    font-style: sans-serif;
+    font-size: 16px;
+    color: #5d5d5d;
+}
+
+#EsconderTodo {
+ display: none;
+}
+
+#URL_Escondida{
+    display: none;
+    background-color: 	#c0bbbb;
+    color: red;
+    border: 1px solid #000000;
+    text-align: center;
+}
+
+#Esconder2{
+    display: none;
+}
+
+#B1{
+    border-radius: 30px 30px 30px 30px;
+    background-color: rgb(238, 155, 0);
+    color: rgb(255, 255, 255);
+}
+
+#B2{
+    display: none;
+    border-radius: 30px 30px 30px 30px;
+    background-color: rgb(238, 155, 0);
+    color: rgb(255, 255, 255);
+    
+}
+
+#B3{
+    display: none;
+    border-radius: 30px 30px 30px 30px;
+    background-color: rgb(238, 155, 0);
+    color: rgb(255, 255, 255);
+    float:right
+}
+
+#A1{
+    display: none;
+    border-radius: 30px 30px 30px 30px;
+    background-color: rgb(238, 155, 0);
+    color: rgb(255, 255, 255);
+}
+
+#p1{
+    display: none;
+    background-color: 	#c0bbbb;
+    color: red;
+    border: 1px solid #000000;
+    text-align: center;
+}
+
+#p2{
+    display: none;
+    background-color: 	#c0bbbb;
+    color: red;
+    border: 1px solid #000000;
+    text-align: center;
+}
+
+#p3{
+    display: none;
+    background-color: 	#c0bbbb;
+    color: red;
+    border: 1px solid #000000;
+    text-align: center;
+}
+
+#p4{
+    display: none;
+    background-color: 	#c0bbbb;
+    color: red;
+    border: 1px solid #000000;
+    text-align: center;
+}
+
+#p5{
+    display: none;
+    background-color: 	#c0bbbb;
+    color: red;
+    border: 1px solid #000000;
+    text-align: center;
+}
+
+#Enseñar_resultado{
+    display: none;
+}
