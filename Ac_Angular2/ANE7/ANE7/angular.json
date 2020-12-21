@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "ANE7"
+  "defaultProject": "ANE7",
+  "cli": {
+    "analytics": "363f4247-fcf7-44c2-beb5-28bd51c88719"
+  }
 }
