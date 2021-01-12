@@ -1,17 +1,18 @@
-<p-table [value]="products">
+<p-table [value]="productos">
     <ng-template pTemplate="header">
         <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Precio</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Phone</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
         <tr>
-            <td>{{producto.id}}</td>
-            <td>{{producto.nombre}}</td>
-            <td>{{producto.precio}}</td>
-            
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.username}}</td>
+            <td>{{product.phone}}</td>
         </tr>
     </ng-template>
 </p-table>
