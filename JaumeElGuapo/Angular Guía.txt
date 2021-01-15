@@ -1,0 +1,107 @@
+JAIME VILA ORQUÍN
+
+**** ANGULAR.IO **** Para ver la documentación de Angular
+
+API ES EL CONJUNTO DE METODOS QUE ESTAN DISPONIBLES DESDE FUERA.
+API de usuarios: https://jsonplaceholder.typicode.com/users
+
+*EMPEZAR PROYECTO*
+ng new <nombre_proyecto>
+
+*UNA VEZ CREADO EL PROYECTO*
+- Borramos app.component.spec.ts ya que sirve para hacer tests y en algunos casos no lo necesitaremos.
+- Borramos el contenido de app.component.html
+- Cambiar en package.json el texto de "start" y le añadimos "-o" (Esto hace que te lo abra en el navegador directamente)
+
+*COMANDO PARA CREAR COMPONENTE*
+ng g c <nombre_componente>
+
+*COMO TRABAJAR*
+-En app.component.html eliges lo QUE quieres que aparezca por pantalla. Es lo que siempre se a ver
+-En <nombreComponent>.component.html eliges COMO quieres que aparezca por pantalla. Aquí ponemos lo que queremos
+que se vea en el display, es decir, lo que va a ir cambiando entre secciones del menú (index, generos, publicar...)
+
+
+*COMO ENROUTAR LOS ENLACES DEL MENU* (home, product, etc)
+-Crear componente "ng g c <nombre_componente>"
+-Abrir app-routing.module.ts y dentro del array routes, añadimos:
+	const routes: Routes = [
+  		{ path: 'home', component: HomeViewComponent },
+  		{ path: 'product', component: ProductViewComponent },
+	];
+-En app.component.html pones lo que se va a ver siempre, por eso es recomendable poner aquí el menú,
+ya que por mucho que navegues por la página, es algo que siempre se tiene que ver.
+Ponemos la etiqueta <router-outlet>. Con esto ya empieza a enroutar
+-Dentro de esa etiqueta (<router-outlet>) ponemos "<a routerLink="/home">HOME</a>" para ir a Inicio.
+
+
+*OCULTAR UN APARTADO DE LA PAGINA A BASE DE IF's SEGUN LO QUE NECESITEMOS MOSTRAR*
+(Esto puede servir para acceder a sitios en los que tienes accesos segun tu rol)
+-La sintaxis para crear un "if" es *ngIf='precio > 0'. Esta sintaxis se escribe dentro de una etiqueta, por ejemplo "<p>": <p *ngIf='precio > 0'> {{x}} </p> (Esto se lee, if precio es mayor que 0, entonces muestrame el contenido de <p>. En este caso {{x}})
+														     	   <p *ngIf='precio'> {{x}}> (Esto se lee, Evaluame la variable "precio", si no es false entonces muestrame el contenido de <p>. En este caso {{x}})
+
+*PARA RECORRER UN ARRAY QUE YA TENEMOS CREADO Y QUE APAREZCAN POR PANTALLA TODOS LOS ELEMENTOS DEL ARRAY*
+- Creamos el array dentro de typescript (.ts)
+- Despues en la etiqueta correspondiente de html ponemos:
+							<ul>
+  								<li *ngFor='let user of users'>{​​​​{​​​​user.name}​​​​}​​​​, Código: {​​​​{​​​​user.id}​​​​}​​​​</li>
+							</ul>
+- Guía para aprender a utilizarlo: https://angular.io/guide/built-in-directives#ngfor
+De este ejemplo hay una foto el día 07/01/2021. Este es el ultimo ejemplo que ha hecho, pero en las fotos hay variantes, este es con una lista de objetos pero en la foto tengo ejemplo con arrays.
+- Existe una libreria que se llama "primeng" que nos hace el trabajo de los puntos anteriores.
+
+
+*PARA CREAR FUNCIONES DENTRO DEL TYPESCRIPT ".ts"*
+- Siempre se crean debajo/detras de "constructor(){}". 
+	En el .ts newFunction =() => { codigo }
+-Para usar las funciones ya creadas en el html, se puede hacer dentro de cualquier etiqueta (button, input...) (En el movil hay una foto del día 07/01/2021 donde se puede ver como crea una funcion y la mete dentro de un html que sirve para cambiar un input en tiempo real una vez lanzada la app,
+puede servir para filtrar a tiempo real.)
+
+*PARA UTILIZAR LA FUNCIÓN ngOnInit()*
+- Esta función se ejecuta después del constructor.
+- Para utilizarla, primero hay que implementar OnInit donde esta-> "export class HomeViewComponent implements OnInit"
+- Para declararla es ngOnInit(): void{}
+-¿USO DE ESTA FUNCION? Para hacer llamadas al back-end, por ejemplo.
+EJEMPLO: FOTO DEL 07/01/2021 para ver como se utiliza en el html
+
+*PARA UTILIZAR LA FUNCIÓN AfterViewInit()*
+- Es una función que se ejecuta un poco más tarde que ngOnInit().
+- Para utilizarla, primero hay que importar import { AfterViewInit } from '@angular/core'; SE IMPORTA SOLO
+- Hay que implementar AfterViewInit -> "export class HomeViewComponent implements OnInit, AfterViewInit"
+- Para declararla es ngAfterViewInit(): void{}
+-¿USOS DE ESTA FUNCION? Si queremos usar algo de nuestro componente, pero ese algo solo funciona si ya se ha cargado la página, podemos usar esta función para asegurarnos de que llamamos a nuestro componente una vez se ha cargado todo lo de la pagina.
+EJEMPLO: FOTO DEL 07/01/2021 para ver como se utiliza en el html
+
+*PARA HACER REFERENCIA EN TU HTML A UN COMPONENTE HIJO Y TRABAJAR DESDE EL COMPONENTE PADRE*
+- Dentro de la etiqueta  <app-root> hay que poner <app-root #nombreComponenteHijo>.
+- En el componente padre hay que declarar: @ViewChild('nombreComponenteHijo') e importar arriba del script "import { ViewChild } from '@angular/core';" SE IMPORTA SOLO
+También tiene que estar declarado el método AfterViewInit(), si no, no te dejará trabajar. (Mirar que hay que hacer para poder declarar esa función)
+De esta manera podemos trabajar con el componente hijo desde el componente padre.
+
+*CONFIGURACIÓN Y DESPEDAZANDO EL SCRIPT DE APP.MODULE.TS*
+En "declarations" declaramos los componentes con los que vamos a trabajar.
+En "imports" declaramos otros modulos que se utilizan en nuestra aplicación.
+
+*PARA UTILIZAR HTTP CLIENT Y OBTENER APIs O RECOGER INFORMACIÓN*
+- Hay que delclarar en el script de app.modules.ts en "imports" (HttpClientModule) y arriba del Script (import { HttpClientModule } from '@angular/common/http';) y en el componente que vamos a hacer el uso le hacemos un hueco en el constructor "private httpClient: HttpClient". Una vez hecho esto, con ctrl+. podemos importarlo arriba de nuevo
+- Una vez hecho esto ya podríamos usarlo incluso dentro de en ngOnInit(). Forma de llamarlo? this.httpClient.get( "link donde obtiene la info" )
+- Si hacemos esa llamada, lo que obtiene, es una promesa y es con lo que nosotros después trabajamos. Lo hariamos de esta manera this.httpClient.get( "link donde obtiene la info" ).suscribe{}		(Ver más info en el angular.io)
+- response {} es la respuesta que obtenemos. suscribe{} es la acción para obtener una respuesta.
+
+*PARA UTILIZAR CUALQUIER LIBRERIA Y CUALQUIERA DE SUS MODULOS*
+- Para utilizar una librería hay que lanzar el comando "npm install <nombre_libreria>".
+Al hacer esto ya podemos empezar a traer modulos de la libreria en cuestion que nosotros queramos. Es como que nos prepara el terreno.
+- Para traernos modulos a nuestro proyecto hay que ir al archivo app.module.ts e importar el modulo que nosotros queremos 
+	(EJ: boton de la libreria PrimeNG -> "import { ButtonModule } from 'primeng/button';")
+-Una vez puesto eso en la parte superior del archivo, hay que declarar ese mismo modulo en el apartado de "imports"
+Muchas librerias traen consigo estilos que también hay que importar para que la librería funcione.
+- Para importar esos estilos hay que ir al archivo "angular.json" y pegar en el apartado de "styles" los estilos de la nueva librería.
+
+*PARA CREAR SERVICIOS DENTRO DE LA APP*
+- Crear servicios se refiere a por ejemplo: en una app de una tienda, borrar un producto (deleteProduct()), actualizar un producto, etc.
+- Comando para crear el servicio: ng c s <nombre_del_servicio>
+- El script/servicio tiene que tener @Injectable(). Este se crea al ejecutar el comando anterior. De todas formas, consultar "angular.io/api/core/Injectable"
+- Si quiero utilizarlo desde un componente (donde está el constructor) tengo que poner en el parentesis del constructor de dicho componente: "private nombreServicio:NombreServicio"
+- Para llamar a uno de nuestros servicios (que esta en el otro script) podemos usar directamente el nombre de la función que tengamos declarada debajo del constructor o "this.nombreServicio.nombrefunción"
+- Aquí tb habría que declarar httpClient en los parentesis del constructor para poder gestionar la información con las funciones/servicios que vamos a crear.
+Hay una foto de ejemplo del día 11/01/2021. 
